@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ua.at.programmers.service;
+package ua.at.programmers.entities.service;
 
 import java.util.List;
 import javax.ejb.Stateless;
@@ -17,26 +17,26 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import ua.at.programmers.entities.user;
+import ua.at.programmers.entities.Users;
 
 /**
  *
  * @author bogdan
  */
 @Stateless
-@Path("ua.at.programmers.entities.user")
-public class userFacadeREST extends AbstractFacade<user> {
+@Path("users")
+public class UsersFacadeREST extends AbstractFacade<Users> {
     @PersistenceContext(unitName = "com.mycompany_sportzal-rest_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
-    public userFacadeREST() {
-        super(user.class);
+    public UsersFacadeREST() {
+        super(Users.class);
     }
 
     @POST
     @Override
     @Consumes({"application/xml", "application/json"})
-    public void create(user entity) {
+    public void create(Users entity) {
         super.create(entity);
     }
 
@@ -44,36 +44,36 @@ public class userFacadeREST extends AbstractFacade<user> {
     @Path("{id}")
     @Consumes({"application/xml", "application/json"})
     public void edit(
-            @PathParam("id") Long id, user entity) {
+            @PathParam("id") Integer id, Users entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
     public void remove(
-            @PathParam("id") Long id) {
+            @PathParam("id") Integer id) {
         super.remove(super.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces({"application/xml", "application/json"})
-    public user find(
-            @PathParam("id") Long id) {
+    public Users find(
+            @PathParam("id") Integer id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces({"application/xml", "application/json"})
-    public List<user> findAll() {
+    public List<Users> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
-    public List<user> findRange(
+    public List<Users> findRange(
             @PathParam("from") Integer from,
             @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});

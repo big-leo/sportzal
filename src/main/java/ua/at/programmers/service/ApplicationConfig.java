@@ -30,7 +30,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(
             Set<Class<?>> resources) {
-        resources.add(ua.at.programmers.service.userFacadeREST.class);
+        resources.add(ua.at.programmers.entities.service.UsersFacadeREST.class);
     }
     
 }
